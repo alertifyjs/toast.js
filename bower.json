@@ -1,0 +1,16 @@
+{
+  "name": "toast.js",
+  "version": "0.1.0",
+  "authors": [
+    "Brad Berger <brad@bradb.net>"
+  ],
+  "main": "dist/js/toast.js",
+  "license": "MPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

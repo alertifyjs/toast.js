@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+    <head>
+        <style>
+            a, a:hover { color: #369; }
+            a:hover { cursor: pointer; text-decoration: underline; }
+            .text-center { text-align: center; }
+            .container { width: 800px; max-width: 100%; margin: 0 auto; }
+        </style>
+    </head>
+    <body>
+        <div class="container text-center">
+            <p>
+                Position:
+                <select id="position">
+                    <option value="top">top</option>
+                    <option value="top left">top left</option>
+                    <option value="top right">top right</option>
+                    <option value="bottom">bottom</option>
+                    <option value="bottom left">bottom left</option>
+                    <option value="bottom right">bottom right</option>
+                </select>
+            </p>
+            <p>
+                Transition:
+                <select id="transition">
+                    <option value="">none</option>
+                    <option value="fade">fade</option>
+                    <option value="slide">slide</option>
+                </select>
+            </p>
+            <p>
+                <a class="showSimple">Simple</a> |
+                <a class="showOk">With Single Action</a> |
+                <a class="showOkCancel">With Ok and Cancel</a>
+            </p>
+        </div>
+
+        <script src="../dist/js/toast.js"></script>
+        <script>
+
+            var resultOk = function(result) {
+                if ("timeout" === result) {
+                    new Toast().show("Toast timed out");
+                } else {
+                    // The `result` variable will be an event.
+                    new Toast().show("You clicked okay.");
+                }
+            };
+
+            var resultNotOk = function(result) {
+                if ("timeout" === result) {
+                    new Toast().show("Toast timed out");
+                } else {
+                    // The `result` variable will be an event.
+                    new Toast().show("You clicked cancel");
+                }
+            };
+
+            var getPosition = function() {
+                return document.getElementById("position").value;
+            };
+
+            var getTransition = function() {
+                return document.getElementById("transition").value;
+            };
+
+            document.querySelector(".showSimple").addEventListener("click", function() {
+                new Toast(getPosition())
+                    .transition(getTransition())
+                    .show("Hello, world")
+                    .then(resultOk, resultNotOk);
+            });
+
+            document.querySelector(".showOk").addEventListener("click", function() {
+                new Toast(getPosition())
+                    .transition(getTransition())
+                    .show("Hello, world").then(resultOk, resultNotOk);
+            });
+
+            document.querySelector(".showOkCancel").addEventListener("click", function() {
+                new Toast(getPosition())
+                    .transition(getTransition())
+                    .show("Hello, world")
+                    .then(resultOk, resultNotOk);
+            });
+        </script>
+    </body>
+</html>

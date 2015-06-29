@@ -1,0 +1,74 @@
+.alertify {
+
+  &.toast {
+
+    padding: .5em 1em;
+    background-color: rgba(0,0,0,.67);
+
+    &, a, a:hover {
+      color: #fff;
+    }
+
+    a:hover {
+      cursor: pointer;
+    }
+
+    &.fade {
+      transition: all 1s;
+      opacity: 1;
+      &.hide {
+        opacity: 0;
+      }
+    }
+
+    &.slide {
+
+      &.bottom {
+        &.hide {
+          bottom: -36px;
+        }
+        bottom: 0;
+      }
+
+      &.top {
+        &.hide {
+          top: -36px;
+        }
+        top: 0;
+      }
+
+    }
+
+    &.bottom {
+      position: fixed;
+      top: inherit !important;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &.top {
+      position: fixed;
+      bottom: inherit !important;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &.bottom.right, &.top.right {
+      left: inherit !important;
+    }
+
+    &.bottom.left, &.top.left {
+      right: inherit !important;
+    }
+
+  }
+
+  .toast-cancel, .toast-ok {
+    float: right;
+    margin-left: .5em;
+    display: inline-block;
+  }
+
+}
